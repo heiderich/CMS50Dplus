@@ -289,7 +289,7 @@ def dumpLiveData(port, filename):
     print "Press CTRL-C or disconnect the device to terminate data collection."
     oximeter = CMS50Dplus(port)
     measurements = 0
-    with open(filename, 'wb') as csvfile:
+    with open(filename, 'w') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_NONNUMERIC)
         writer.writerow(LiveDataPoint.getCsvColumns())
         for liveData in oximeter.getLiveData():
@@ -311,7 +311,7 @@ def dumpRecordedData(starttime, port, filename):
     print "Please wait as the latest session is downloaded..."
     oximeter = CMS50Dplus(port)
     measurements = 0
-    with open(filename, 'wb') as csvfile:
+    with open(filename, 'w') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_NONNUMERIC)
         writer.writerow(RecordedDataPoint.getCsvColumns())
         for recordedData in oximeter.getRecordedData(starttime):
